@@ -2,8 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('event_detail', views.event_detail, name='event_detail'),
-    path('event_list', views.event_list, name='event_list'),
-    path('new_event_request', views.new_event_request, name='new_event_request'),
+    path('', views.list, name='event_list'),
+    path('<int:id>/detail/', views.detail, name='event_detail'),
+    path('new/', views.new, name='event_request_new'),
 
 ]
