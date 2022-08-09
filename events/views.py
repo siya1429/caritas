@@ -1,11 +1,11 @@
 from django.shortcuts import render
 
 # Create your views here.
-def event_detail(request):
-  return render(request, 'events/event_detail.html')
+def detail(request, id):
+  return render(request, 'events/detail.html')
 
-def event_list(request):
-  return render(request, 'events/event_list.html')
+def list(request):
+  return render(request, 'events/list.html')
 
-def new_event_request(request):
-  return render(request, 'events/new_event_request.html')
+def new(request):
+  return render(request, 'events/new.html')
