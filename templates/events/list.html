@@ -2,7 +2,15 @@
 {% block content %}
 
 
-<h1>EVENT LIST PAGE</h1>
+<div class="container">
+  <div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+      {% for items in event_list %}
+      <li class="list-group-item">Name : {{ items.name }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 
 
 {% endblock content %}
