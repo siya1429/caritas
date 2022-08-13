@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+
+import events
 from .models import Event
 # Create your views here.
 def detail(request, id):
@@ -7,12 +9,11 @@ def detail(request, id):
 
 @login_required(login_url='login')
 def list(request):
-  if request.method == "POST":
-    name = request.POST.get('name')
-    event_list = Event(name=name)
-    event_list.save()
-    return redirect('event_list')
-  return render(request, 'events/list.html')
+    events = Event.objects.filter( user=request.user )
+    context ={
+      'events' : events
+    }
+    return render(request, 'events/list.html', context)
 
 @login_required(login_url='login')
 def new(request):

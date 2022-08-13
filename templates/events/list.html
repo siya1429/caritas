@@ -5,8 +5,8 @@
 <div class="container">
   <div class="card" style="width: 18rem;">
     <ul class="list-group list-group-flush">
-      {% for items in event_list %}
-      <li class="list-group-item">Name : {{ items.name }}</li>
+      {% for event in events %}
+      <li class="list-group-item">Name : {{ event.name }}</li>
       {% endfor %}
     </ul>
   </div>
