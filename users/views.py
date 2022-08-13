@@ -30,7 +30,7 @@ def register(request):
     email = request.POST.get('email')
     password = request.POST.get('password')
     
-    user = User(full_name = full_name, phone = phone, email = email, password = password)
+    user = User(full_name=full_name, phone=phone, email=email)
     user.set_password(password)
     user.save()
     return redirect('login')
