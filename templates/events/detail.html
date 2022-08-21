@@ -2,7 +2,12 @@
 {% block content %}
 
 
-<h1>EVENT DETAIL PAGE</h1>
+<div class="container">
+  <p>Name: {{ event.name }}</p>
+  <p>Description: {{event.description}}</p>
+  <p>Purpose: {{event.purpose}}</p>
+  
+</div>
 
 
 {% endblock content %}
