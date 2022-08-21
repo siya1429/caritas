@@ -1,15 +1,26 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-
-import events
 from .models import Event
+from django.contrib import messages
+
+
 # Create your views here.
+
+@login_required(login_url='login')
 def detail(request, id):
-  return render(request, 'events/detail.html')
+  try:
+    event = Event.objects.get(id=id, user=request.user)
+    context = {
+      'event' : event
+    }
+    return render(request, 'events/detail.html', context)
+  except Event.DoesNotExist:
+    messages.error(request, 'Event not found')
+    return redirect('event_list')
 
 @login_required(login_url='login')
 def list(request):
-    events = Event.objects.filter( user=request.user )
+    events = Event.objects.filter(user=request.user)
     context ={
       'events' : events
     }

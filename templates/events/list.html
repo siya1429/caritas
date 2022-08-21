@@ -6,7 +6,11 @@
   <div class="card" style="width: 18rem;">
     <ul class="list-group list-group-flush">
       {% for event in events %}
-      <li class="list-group-item">Name : {{ event.name }}</li>
+      <li class="list-group-item">
+        Name : {{ event.name }} 
+        <a href="{% url 'event_detail' id=event.id %}" class="btn btn-primary btn-sm">View Details</a>
+
+      </li>
       {% endfor %}
     </ul>
   </div>
