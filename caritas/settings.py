@@ -1,3 +1,8 @@
+from dotenv import load_dotenv
+
+load_dotenv()  # take environment variables from .env.
+
+
 """
 Django settings for caritas project.
 
@@ -11,6 +16,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,3 +139,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
+
+RAZORPAY_KEY = os.environ.get('RAZORPAY_KEY')
+RAZORPAY_SECRET = os.environ.get('RAZORPAY_SECRET')

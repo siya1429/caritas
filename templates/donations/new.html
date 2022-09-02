@@ -1,9 +1,21 @@
-{% extends 'base.html' %}
-
+{% extends 'base.html' %} 
 {% block content %}
 
-
-<h1>NEW DONATION PAGE</h1>
-
+<div class="container">
+  <form action="{% url 'donation_new' %}" method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="category" class="form-label">Category</label>
+      <input type="text" class="form-control" id="category" name="category" />
+    </div>
+    <div class="mb-3">
+      <label for="amout" class="form-label">Amount</label>
+      <input type="number" class="form-control" id="amount" name="amount" />
+    </div>
+    <div class="d-grid gap-2">
+      <button class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</div>
 
 {% endblock content %}
