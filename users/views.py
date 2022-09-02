@@ -34,6 +34,21 @@ def profile(request):
   }
   return render(request, 'users/profile.html', context)
 
+@login_required(login_url='login')
+def profile_edit(request):
+  user = request.user
+  if request.method == "POST":
+    name = request.POST.get('name')
+    phone = request.POST.get('phone')
+
+    user.full_name = name
+    user.phone = phone
+    user.save()
+    return redirect('profile')
+  context = {
+    'user':user
+  }
+  return render(request, 'users/profile_edit.html', context)
 def register(request):
   if request.method == 'POST':
     full_name = request.POST.get('full_name')
